@@ -15,7 +15,9 @@ class Radio(BaseComponent):
 
         children = []
         for value in self.values:
-            input_child = Input(type="radio", id=value.lower(), name=self.name, value=value, hx_get=self.hx_get, hx_target=self.hx_target, checked="checked" if value==model.name.title() else "")
+            input_child = Input(type="radio", id=value.lower(), name=self.name, value=value, hx_get=self.hx_get, hx_target=self.hx_target)
+            if value == model.name.title():
+                input_child.checked = "checked"
             label_child = Label(value, _for=value.lower())
             children.append(input_child)
             children.append(label_child)
